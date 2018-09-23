@@ -1,0 +1,23 @@
+version: "3.3"
+
+services:
+  api:
+    image: baffedu/laravel:0.2
+    volumes:
+      - ${API_PATH}/supervisor.conf:/etc/supervisor/conf.d/api.conf
+      - ${API_PATH}:/var/www/laravel
+    environment:
+      - VIRTUAL_HOST=${API_HOST}
+  app:
+    image: nginx:1.15.3
+    volumes:
+      - ${APP_PATH}:/usr/share/nginx/html
+    environment:
+      - VIRTUL_HOST=${APP_HOST}
+
+# when telnet other service, you may need to configure firewalld
+# docker network create --driver=bridge --subnet=10.50.0.0/16 baffedu
+networks:
+  default:
+    external:
+      name: baffedu
