@@ -2,7 +2,7 @@ version: "3.3"
 
 services:
   api:
-    image: baffedu/laravel:0.2
+    image: baffedu/laravel:0.3
     volumes:
       - ${API_PATH}/supervisor.conf:/etc/supervisor/conf.d/api.conf
       - ${API_PATH}:/var/www/laravel
