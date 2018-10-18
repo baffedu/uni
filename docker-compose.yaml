@@ -8,6 +8,8 @@ services:
       - ${API_PATH}:/var/www/laravel
     environment:
       - VIRTUAL_HOST=${API_HOST}
+      - APP_MAIN_DB=${APP_MAIN_DB}
+      - APP_IMPORT_DB=${APP_IMPORT_DB}
   app:
     image: nginx:1.15.3
     volumes:
