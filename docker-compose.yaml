@@ -2,12 +2,14 @@ version: "3.3"
 
 services:
   api:
-    image: baffedu/laravel:0.3
+    image: php:7.2-fpm
     volumes:
       - ${API_PATH}/supervisor.conf:/etc/supervisor/conf.d/api.conf
       - ${API_PATH}:/var/www/laravel
     environment:
       - VIRTUAL_HOST=${API_HOST}
+      - VIRTUAL_PROTO=fastcgi
+      - VIRTUAL_ROOT=/var/www/laravel/public/index.php
       - APP_MAIN_DB=${APP_MAIN_DB}
       - APP_IMPORT_DB=${APP_IMPORT_DB}
   app:
