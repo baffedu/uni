@@ -4,18 +4,18 @@ services:
   api:
     image: baffedu/laravel:0.3
     volumes:
-    - ${API_PATH}/supervisor.conf:/etc/supervisor/conf.d/api.conf
-    - ${API_PATH}:/var/www/laravel
+      - ${API_PATH}/supervisor.conf:/etc/supervisor/conf.d/api.conf
+      - ${API_PATH}:/var/www/laravel
     environment:
-    - VIRTUAL_HOST=${API_HOST}
-    - APP_MAIN_DB=${APP_MAIN_DB}
-    - APP_IMPORT_DB=${APP_IMPORT_DB}
+      - VIRTUAL_HOST=${API_HOST}
+      - APP_MAIN_DB=${APP_MAIN_DB}
+      - APP_IMPORT_DB=${APP_IMPORT_DB}
   app:
     image: nginx:1.15.3
     volumes:
-    - ${APP_PATH}:/usr/share/nginx/html
+      - ${APP_PATH}:/usr/share/nginx/html
     environment:
-    - VIRTUAL_HOST=${APP_HOST}
+      - VIRTUAL_HOST=${APP_HOST}
 
 # when telnet other service, you may need to configure firewalld
 # docker network create --driver=bridge --subnet=10.50.0.0/16 baffedu
