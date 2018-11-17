@@ -2,10 +2,10 @@ version: "3.3"
 
 services:
   api:
-    image: baffedu/laravel:0.3
+    image: baffedu/laravel:0.1-fpm
     volumes:
-      - ${API_PATH}/supervisor.conf:/etc/supervisor/conf.d/api.conf
-      - ${API_PATH}:/var/www/laravel
+      - ${API_PATH}/supervisor.conf:/etc/supervisor.d/api.ini
+      - ${API_PATH}:/var/www/html
     environment:
       - VIRTUAL_HOST=${API_HOST}
       - APP_MAIN_DB=${APP_MAIN_DB}
