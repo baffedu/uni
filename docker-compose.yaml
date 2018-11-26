@@ -6,6 +6,7 @@ services:
     volumes:
       - ${API_PATH}/supervisor.conf:/etc/supervisor.d/api.ini
       - ${API_PATH}:/var/www/html
+      - ${MASTER_PATH}/logs:/var/log/uni
     environment:
       - VIRTUAL_HOST=${API_HOST}
       - APP_MAIN_DB=${APP_MAIN_DB}
