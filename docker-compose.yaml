@@ -17,6 +17,12 @@ services:
       - ${APP_PATH}:/usr/share/nginx/html
     environment:
       - VIRTUAL_HOST=${APP_HOST}
+  v2.app:
+    image: nginx:1.15-alpine
+    volumes:
+      - ${V2_APP_PATH}:/usr/share/nginx/html
+    environment:
+      - VIRTUAL_HOST=${V2_APP_HOST}
 
 # when telnet other service, you may need to configure firewalld
 # docker network create --driver=bridge --subnet=10.50.0.0/16 baffedu
