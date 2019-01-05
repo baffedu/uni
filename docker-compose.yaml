@@ -12,7 +12,7 @@ services:
       - APP_MAIN_DB=${APP_MAIN_DB}
       - APP_IMPORT_DB=${APP_IMPORT_DB}
   app:
-    image: nginx:1.15-alpine
+    image: baffedu/front:0.1
     volumes:
       - ${APP_PATH}:/usr/share/nginx/html
     environment:
