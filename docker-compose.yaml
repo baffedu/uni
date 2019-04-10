@@ -17,7 +17,7 @@ services:
       - ${APP_PATH}:/usr/share/nginx/html
     environment:
       - VIRTUAL_HOST=${APP_HOST}
-  v2.app:
+  v2-app:
     image: baffedu/front:0.1
     volumes:
       - ${V2_APP_PATH}:/usr/share/nginx/html
