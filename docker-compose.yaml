@@ -11,18 +11,18 @@ services:
       - VIRTUAL_HOST=${API_HOST}
       - APP_MAIN_DB=${APP_MAIN_DB}
       - APP_IMPORT_DB=${APP_IMPORT_DB}
-  app:
+  eip:
     image: baffedu/front:0.1
     volumes:
-      - ${APP_PATH}:/usr/share/nginx/html
+      - ${EIP_PATH}:/usr/share/nginx/html
     environment:
-      - VIRTUAL_HOST=${APP_HOST}
-  v2-app:
+      - VIRTUAL_HOST=${EIP_HOST}
+  uni:
     image: baffedu/front:0.1
     volumes:
-      - ${V2_APP_PATH}:/usr/share/nginx/html
+      - ${UNI_PATH}:/usr/share/nginx/html
     environment:
-      - VIRTUAL_HOST=${V2_APP_HOST}
+      - VIRTUAL_HOST=${UNI_HOST}
 
 # when telnet other service, you may need to configure firewalld
 # docker network create --driver=bridge --subnet=10.50.0.0/16 baffedu
