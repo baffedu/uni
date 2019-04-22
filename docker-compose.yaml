@@ -17,12 +17,24 @@ services:
       - ${EIP_PATH}:/usr/share/nginx/html
     environment:
       - VIRTUAL_HOST=${EIP_HOST}
-  uni:
+  finance:
     image: baffedu/front:0.1
     volumes:
-      - ${UNI_PATH}:/usr/share/nginx/html
+      - ${FINANCE_PATH}:/usr/share/nginx/html
     environment:
-      - VIRTUAL_HOST=${UNI_HOST}
+      - VIRTUAL_HOST=${FINANCE_HOST}
+  telesales:
+    image: baffedu/front:0.1
+    volumes:
+      - ${TELESALES_PATH}:/usr/share/nginx/html
+    environment:
+      - VIRTUAL_HOST=${TELESALES_HOST}
+  students:
+    image: baffedu/front:0.1
+    volumes:
+      - ${STUDENTS_PATH}:/usr/share/nginx/html
+    environment:
+      - VIRTUAL_HOST=${STUDENTS_HOST}
 
 # when telnet other service, you may need to configure firewalld
 # docker network create --driver=bridge --subnet=10.50.0.0/16 baffedu
