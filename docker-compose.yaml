@@ -23,6 +23,12 @@ services:
       - ${UNI_PATH}:/usr/share/nginx/html
     environment:
       - VIRTUAL_HOST=${UNI_HOST}
+  administration:
+    image: baffedu/front:0.1
+    volumes:
+      - ${ADMINISTRATION_PATH}:/usr/share/nginx/html
+    environment:
+      - VIRTUAL_HOST=${ADMINISTRATION_HOST}
 
 # when telnet other service, you may need to configure firewalld
 # docker network create --driver=bridge --subnet=10.50.0.0/16 baffedu
