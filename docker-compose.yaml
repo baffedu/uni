@@ -1,33 +1,44 @@
 version: "3.3"
 
 services:
+  api_proxy:
+    image: baffedu/front:public
+    links:
+      - api:php
+    volumes:
+      - ${API_PATH}:/var/www/html
+    environment:
+      - TZ=Asia/Chongqing
+      - VIRTUAL_HOST=${API_HOST}
   api:
     image: baffedu/laravel:0.5
     volumes:
       - ${API_PATH}/supervisor.conf:/etc/supervisor.d/api.ini
       - ${API_PATH}:/var/www/html
-      - ${MASTER_PATH}/logs:/var/log/uni
     environment:
-      - VIRTUAL_HOST=${API_HOST}
-      - APP_MAIN_DB=${APP_MAIN_DB}
-      - APP_IMPORT_DB=${APP_IMPORT_DB}
+      - TZ=Asia/Chongqing
+      - APP_NAME=${API_NAME}
+      - APP_URL=${API_HOST}
   eip:
     image: baffedu/front:0.1
     volumes:
       - ${EIP_PATH}:/usr/share/nginx/html
     environment:
+      - TZ=Asia/Chongqing
       - VIRTUAL_HOST=${EIP_HOST}
   uni:
     image: baffedu/front:0.1
     volumes:
       - ${UNI_PATH}:/usr/share/nginx/html
     environment:
+      - TZ=Asia/Chongqing
       - VIRTUAL_HOST=${UNI_HOST}
   administration:
     image: baffedu/front:0.1
     volumes:
       - ${ADMINISTRATION_PATH}:/usr/share/nginx/html
     environment:
+      - TZ=Asia/Chongqing
       - VIRTUAL_HOST=${ADMINISTRATION_HOST}
 
 # when telnet other service, you may need to configure firewalld
